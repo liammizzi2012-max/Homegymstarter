@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Rack — Honest Home Gym Gear Picks</title>
+<style>
+  :root{
+    --iron:#1c1c1e;
+    --plate:#2b2b2d;
+    --chalk:#f2efe9;
+    --rubber:#e0483e;
+    --steel:#8b9096;
+    --tape:#f0b429;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--iron);
+    color:var(--chalk);
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    line-height:1.5;
+  }
+  @font-face{
+    font-family:'Anton-fallback';
+  }
+  .display{
+    font-family: Arial Black, Arial, sans-serif;
+    font-weight:900;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 0; border-bottom:1px solid #3a3a3c;
+  }
+  .logo{font-size:20px; letter-spacing:0.02em;}
+  .logo span{color:var(--rubber);}
+  nav .tag{font-size:11px; color:var(--steel); letter-spacing:0.15em; text-transform:uppercase;}
+
+  /* HERO */
+  .hero{
+    padding:80px 0 60px;
+    border-bottom:1px solid #3a3a3c;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .eyebrow{
+    color:var(--tape); font-size:13px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero .eyebrow::before{content:""; width:24px; height:2px; background:var(--tape); display:inline-block;}
+  .hero h1{
+    font-size:clamp(38px, 7vw, 78px);
+    line-height:0.95;
+    max-width:820px;
+  }
+  .hero h1 .accent{color:var(--rubber);}
+  .hero p.sub{
+    max-width:520px; margin-top:24px; color:#c9c8c4; font-size:17px;
+  }
+
+  /* LOAD METER — signature element */
+  .load-meter{
+    margin-top:48px; display:flex; align-items:flex-end; gap:6px; height:64px;
+  }
+  .load-meter .plate{
+    width:34px; background:var(--plate); border:1px solid #444;
+    border-radius:2px; position:relative;
+  }
+  .load-meter .plate.active{background:var(--rubber); border-color:var(--rubber);}
+  .load-meter-label{font-size:11px; color:var(--steel); letter-spacing:0.1em; text-transform:uppercase; margin-top:10px;}
+
+  /* AD SLOT */
+  .ad-slot{
+    margin:48px 0; padding:18px; border:1px dashed #4a4a4c; border-radius:4px;
+    text-align:center; color:#6b6b6d; font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+  }
+
+  section{padding:64px 0; border-bottom:1px solid #3a3a3c;}
+  .section-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:36px; flex-wrap:wrap; gap:12px;}
+  .section-head h2{font-size:clamp(26px,4vw,40px);}
+  .section-head .count{color:var(--steel); font-size:13px; letter-spacing:0.1em;}
+
+  /* PRODUCT CARDS */
+  .picks{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:20px;}
+  .pick{
+    background:var(--plate); border:1px solid #3a3a3c; border-radius:6px; padding:24px;
+    display:flex; flex-direction:column; gap:12px; transition:border-color .2s ease, transform .2s ease;
+  }
+  .pick:hover{border-color:var(--rubber); transform:translateY(-2px);}
+  .pick .rank{
+    font-size:12px; color:var(--rubber); letter-spacing:0.15em; text-transform:uppercase; font-weight:700;
+  }
+  .pick h3{font-size:21px; text-transform:none; letter-spacing:0;}
+  .pick .desc{color:#c9c8c4; font-size:14px; flex-grow:1;}
+  .pick .meta{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid #3a3a3c; padding-top:14px; font-size:13px; color:var(--steel);
+  }
+  .pick .cta{
+    display:inline-block; margin-top:6px; background:var(--rubber); color:#fff; text-decoration:none;
+    padding:10px 16px; border-radius:4px; font-size:13px; font-weight:700; letter-spacing:0.05em;
+    text-transform:uppercase; text-align:center;
+  }
+  .pick .cta:hover{background:#c93c33;}
+
+  /* BUYING GUIDE */
+  .guide-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .guide-item{padding-left:20px; border-left:2px solid var(--tape);}
+  .guide-item h4{font-size:16px; margin-bottom:8px; text-transform:none;}
+  .guide-item p{color:#c9c8c4; font-size:14px;}
+
+  /* FAQ */
+  .faq-item{padding:20px 0; border-bottom:1px solid #3a3a3c;}
+  .faq-item:last-child{border-bottom:none;}
+  .faq-item h4{font-size:16px; margin-bottom:8px; text-transform:none; color:var(--chalk);}
+  .faq-item p{color:#c9c8c4; font-size:14px;}
+
+  footer{padding:40px 0; text-align:center; color:var(--steel); font-size:12px;}
+  footer p{margin-bottom:6px;}
+
+  @media (max-width:640px){
+    .guide-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="logo display">HOME<span>RACK</span></div>
+    <div class="tag">Gear tested at home, not in a lab</div>
+  </nav>
+
+  <div class="hero">
+    <div class="eyebrow">No membership. No commute. Just a corner of a room.</div>
+    <h1 class="display">Build a gym<br>in the space<br>of a <span class="accent">yoga mat.</span></h1>
+    <p class="sub">Honest picks for training at home — what's actually worth buying at each budget, and what to skip. Every recommendation links to the retailer; we may earn a commission if you buy through it.</p>
+
+    <div class="load-meter" aria-hidden="true">
+      <div class="plate active" style="height:20%"></div>
+      <div class="plate active" style="height:38%"></div>
+      <div class="plate active" style="height:56%"></div>
+      <div class="plate" style="height:74%"></div>
+      <div class="plate" style="height:100%"></div>
+    </div>
+    <div class="load-meter-label">Budget &nbsp;→&nbsp; Serious Home Gym</div>
+  </div>
+
+  <div class="ad-slot">Ad slot — 728×90 (replace with your AdSense unit)</div>
+
+  <section id="picks">
+    <div class="section-head">
+      <h2 class="display">This Week's Top Picks</h2>
+      <div class="count">5 items · updated weekly</div>
+    </div>
+    <div class="picks">
+
+      <div class="pick">
+        <div class="rank">Best Overall</div>
+        <h3>Adjustable Dumbbell Set</h3>
+        <p class="desc">Replaces a full rack in the footprint of two shoeboxes. Dial in the weight instead of swapping plates — the single biggest space-saver for a home setup.</p>
+        <div class="meta"><span>$$ · Compact</span><span>4.6★ avg</span></div>
+        <a class="cta" href="#" target="_blank" rel="noopener">View on Amazon →</a>
+      </div>
+
+      <div class="pick">
+        <div class="rank">Best Under $30</div>
+        <h3>Fabric Resistance Band Set</h3>
+        <p class="desc">Doesn't roll or snap like rubber loops. Covers most lower-body and mobility work with zero setup — stuff it in a drawer when you're done.</p>
+        <div class="meta"><span>$ · Beginner</span><span>4.7★ avg</span></div>
+        <a class="cta" href="#" target="_blank" rel="noopener">View on Amazon →</a>
+      </div>
+
+      <div class="pick">
+        <div class="rank">Best for Small Spaces</div>
+        <h3>Doorframe Pull-Up Bar</h3>
+        <p class="desc">No drilling, holds most standard frames, and comes down in seconds. The one piece of equipment that keeps upper-body pulling work realistic at home.</p>
+        <div class="meta"><span>$ · No install</span><span>4.5★ avg</span></div>
+        <a class="cta" href="#" target="_blank" rel="noopener">View on Amazon →</a>
+      </div>
+
+      <div class="pick">
+        <div class="rank">Best Single Tool</div>
+        <h3>Cast Iron Kettlebell</h3>
+        <p class="desc">One weight, dozens of movements — swings, goblet squats, presses, carries. If you can only buy one piece of iron, this is the one that does the most.</p>
+        <div class="meta"><span>$$ · Versatile</span><span>4.8★ avg</span></div>
+        <a class="cta" href="#" target="_blank" rel="noopener">View on Amazon →</a>
+      </div>
+
+      <div class="pick">
+        <div class="rank">Best Foundation</div>
+        <h3>6mm Non-Slip Exercise Mat</h3>
+        <p class="desc">The thing everything else sits on. Thick enough to protect knees and floors, thin enough not to wobble under dumbbells.</p>
+        <div class="meta"><span>$ · Everyday use</span><span>4.6★ avg</span></div>
+        <a class="cta" href="#" target="_blank" rel="noopener">View on Amazon →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="ad-slot">Ad slot — in-feed native unit (replace with your AdSense unit)</div>
+
+  <section id="guide">
+    <div class="section-head">
+      <h2 class="display">Before You Buy</h2>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-item">
+        <h4>Start with one tool, not a set</h4>
+        <p>A single adjustable dumbbell or kettlebell gets used far more often than a matching rack of fixed weights nobody has room for.</p>
+      </div>
+      <div class="guide-item">
+        <h4>Floor protection isn't optional</h4>
+        <p>A mat under weights protects the equipment and the floor beneath it — cheaper than replacing either.</p>
+      </div>
+      <div class="guide-item">
+        <h4>Bodyweight-first still wins on value</h4>
+        <p>A $20 pull-up bar unlocks more programming than most machines costing ten times as much.</p>
+      </div>
+      <div class="guide-item">
+        <h4>Buy for the space you have, not the space you want</h4>
+        <p>Fold-flat and stackable gear gets used; equipment that has to be worked around usually doesn't.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="section-head">
+      <h2 class="display">Questions</h2>
+    </div>
+    <div class="faq-item">
+      <h4>How were these picked?</h4>
+      <p>Based on price-to-use ratio, space required, and how often each item tends to actually get used versus sit in a corner.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Do you update this list?</h4>
+      <p>Yes — the top picks section is meant to be refreshed as prices and availability change.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How does this site make money?</h4>
+      <p>Through affiliate links (a small commission on purchases made through them) and display ads. Neither costs you anything extra.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Home Rack — independent home fitness gear guide.</p>
+    <p>As an Amazon Associate, this site may earn from qualifying purchases.</p>
+  </footer>
+</div>
+
+</body>
+</html>
